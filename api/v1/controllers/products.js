@@ -1,43 +1,43 @@
 module.exports = {
 
-    getAll:(req,res) => {
-        try{
-            return res.status(200).json({msg : "all products"});
+    getAll: (req, res) => {
+        try {
+            return res.status(200).json({ msg: "all products" });
         }
-        catch{
-            return res.status(500).json({msg : "500 server error"});
-        }
-    },
-    getByID:(req,res) => {
-        try{
-            return res.status(200).json({msg : `product ${req.params.id}`});
-        }
-        catch{
-            return res.status(500).json({msg : "500 server error"});
+        catch {
+            return res.status(500).json({ msg: "500 server error" });
         }
     },
-    updateById:(req,res) => {
-        try{
-            return res.status(200).json({msg : `product ${req.params.id} updated`});
+    getByID: (req, res) => {
+        try {
+            return res.status(200).json({ msg: `product ${req.params.id}` });
         }
-        catch{
-            return res.status(500).json({msg : "500 server error"});
-        }
-    },
-    postNew:(req,res) => {
-        try{
-            return res.status(200).json({msg : "product added"});
-        }
-        catch{
-            return res.status(500).json({msg : "500 server error"});
+        catch {
+            return res.status(500).json({ msg: "500 server error" });
         }
     },
-    deleteById:(req,res) => {
-        try{
-            return res.status(200).json({msg : `product ${req.params.id} deleted`});
+    updateById: (req, res) => {
+        try {
+            return res.status(200).json({ msg: `product ${req.params.id} updated`, body: req.body });
         }
-        catch{
-            return res.status(500).json({msg : "500 server error"});
+        catch {
+            return res.status(500).json({ msg: "500 server error" });
+        }
+    },
+    postNew: (req, res) => {
+        try {
+            return res.status(200).json({ msg: "product added", body: req.body });
+        }
+        catch {
+            return res.status(500).json({ msg: "500 server error" });
+        }
+    },
+    deleteById: (req, res) => {
+        try {
+            return res.status(200).json({ msg: `product ${req.params.id} deleted`, body: req.body });
+        }
+        catch {
+            return res.status(500).json({ msg: "500 server error" });
         }
     },
 }
