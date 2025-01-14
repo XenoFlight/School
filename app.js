@@ -19,6 +19,9 @@ const secure = require('./api/v1/middelware/secure');
 
 app.use(secure);
 
+app.all('*' , (req,res)=>{
+    return res.status(404).json({msg:"not found 404"})
+});
 
 app.use('/product', productsRoutes);
 

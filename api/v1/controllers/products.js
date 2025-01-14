@@ -1,3 +1,5 @@
+const productModel=require('../modules/products');
+
 module.exports = {
 
     getAll: (req, res) => {
