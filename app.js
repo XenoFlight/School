@@ -17,12 +17,10 @@ app.use(express.urlencoded({ extended: true }));
 console.log(process.env.GOGGLE_USER);
 const secure = require('./api/v1/middelware/secure');
 
-app.use(secure);
+//app.use(secure);
+app.use('/products', productsRoutes);
 
 app.all('*' , (req,res)=>{
-    return res.status(404).json({msg:"not found 404"})
+    return res.status(404).json({msg:"Not Found 404"})
 });
-
-app.use('/product', productsRoutes);
-
 module.exports = app;

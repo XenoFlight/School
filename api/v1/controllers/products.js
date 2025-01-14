@@ -1,10 +1,12 @@
-const productModel=require('../modules/products');
+const productModel = require('../modules/products');
 
 module.exports = {
 
     getAll: (req, res) => {
         try {
-            return res.status(200).json({ msg: "all products" });
+            productModel.find().then((products) => {
+                return res.status(200).json(products);
+            });
         }
         catch {
             return res.status(500).json({ msg: "500 server error" });
@@ -12,7 +14,9 @@ module.exports = {
     },
     getByID: (req, res) => {
         try {
-            return res.status(200).json({ msg: `product ${req.params.id}` });
+            productModel.find({ pid: req.params.id }).then((products) => {
+                return res.status(200).json(products)
+            });
         }
         catch {
             return res.status(500).json({ msg: "500 server error" });
@@ -20,7 +24,9 @@ module.exports = {
     },
     updateById: (req, res) => {
         try {
-            return res.status(200).json({ msg: `product ${req.params.id} updated`, body: req.body });
+            productModel.find({ pid: req.params.id }).then((products) => {
+                return res.status(200).json(products)
+            });
         }
         catch {
             return res.status(500).json({ msg: "500 server error" });
@@ -28,7 +34,10 @@ module.exports = {
     },
     postNew: (req, res) => {
         try {
-            return res.status(200).json({ msg: "product added", body: req.body });
+            productModel.create(req.body).then((products) => {
+                productModel.save()
+                return res.status(200).json(products);
+            });
         }
         catch {
             return res.status(500).json({ msg: "500 server error" });
@@ -36,7 +45,9 @@ module.exports = {
     },
     deleteById: (req, res) => {
         try {
-            return res.status(200).json({ msg: `product ${req.params.id} deleted`, body: req.body });
+            productModel.find({ pid: req.params.id }).then((products) => {
+                return res.status(200).json(products)
+            });
         }
         catch {
             return res.status(500).json({ msg: "500 server error" });
